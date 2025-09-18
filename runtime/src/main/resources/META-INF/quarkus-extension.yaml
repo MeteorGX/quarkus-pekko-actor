@@ -1,0 +1,11 @@
+name: Pekko Actor
+description: Integrates Pekko Actor with Quarkus.
+metadata:
+  keywords:
+    - pekko
+    - actor
+    - concurrency
+  categories:
+    - "miscellaneous"
+  config:
+    - "quarkus.actor."
