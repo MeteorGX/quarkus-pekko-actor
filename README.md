@@ -140,6 +140,11 @@ quarkus.actor.settings.pekko.cluster.downing-provider-class=org.apache.pekko.clu
 quarkus.actor.settings.pekko.cluster.split-brain-resolver.active-strategy=keep-majority
 ```
 
+## Example
+
+- [quarkus-websocket-chatroom](https://github.com/MeteorGX/quarkus-pekko-actor-example/tree/main/chatroom)
+- [quarkus-websocket-chatroom-cluster](https://github.com/MeteorGX/quarkus-pekko-actor-example/tree/main/chatroom-cluster)
+
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
