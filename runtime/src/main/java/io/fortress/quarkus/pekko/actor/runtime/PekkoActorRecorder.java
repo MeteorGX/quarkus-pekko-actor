@@ -59,7 +59,7 @@ public class PekkoActorRecorder {
         ActorSystem system = createActorSystem(configuration);
 
         // register shutdown callback
-        shutdownContext.addShutdownTask(() -> {
+        shutdownContext.addLastShutdownTask(() -> {
             system.terminate();
             system.getWhenTerminated().toCompletableFuture().join();// wait
         });
