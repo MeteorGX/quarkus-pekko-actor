@@ -2,6 +2,7 @@ package io.fortress.quarkus.pekko.actor.deployment;
 
 import io.fortress.quarkus.pekko.actor.extension.ActorContainer;
 import io.fortress.quarkus.pekko.actor.runtime.PekkoActorRecorder;
+import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.arc.deployment.SyntheticBeanBuildItem;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -10,8 +11,10 @@ import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.ShutdownContextBuildItem;
 import io.quarkus.runtime.RuntimeValue;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Singleton;
-import org.apache.pekko.actor.ActorSystem;
+import org.apache.pekko.actor.*;
 
 /**
  * io.fortress.quarkus.pekko.actor.deployment.PekkoActorProcessor.java
@@ -42,7 +45,6 @@ class PekkoActorProcessor {
         return new FeatureBuildItem(FEATURE);
     }
 
-
     /**
      * Build process for initializing Pekko ActorSystem and exposing it as a Quarkus synthetic bean
      * <p>
@@ -62,15 +64,25 @@ class PekkoActorProcessor {
         RuntimeValue<ActorSystem> holder = recorder.createActorSystem(shutdownContext);
         syntheticBeans.produce(
                 SyntheticBeanBuildItem.configure(ActorSystem.class)
+                        .addType(ActorSystem.class)
+                        .addType(ActorSystemImpl.class)
+                        .addType(ActorRefFactory.class)
+                        .addType(ExtendedActorSystem.class)
+                        .addType(ClassicActorSystemProvider.class)
+                        .scope(Singleton.class)
                         .runtimeValue(holder)
                         .setRuntimeInit()
+                        .unremovable()
                         .done());
 
         RuntimeValue<ActorContainer> container = recorder.createActorContainer(holder, shutdownContext);
         syntheticBeans.produce(
                 SyntheticBeanBuildItem.configure(ActorContainer.class)
+                        .addType(ActorContainer.class)
                         .runtimeValue(container)
                         .setRuntimeInit()
+                        .scope(Singleton.class)
+                        .unremovable()
                         .done()
         );
 
