@@ -144,7 +144,9 @@ quarkus.actor.settings.pekko.cluster.split-brain-resolver.active-strategy=keep-m
 
 - [quarkus-websocket-chatroom](https://github.com/MeteorGX/quarkus-pekko-actor-example/tree/main/chatroom)
 - [quarkus-websocket-chatroom-cluster](https://github.com/MeteorGX/quarkus-pekko-actor-example/tree/main/chatroom-cluster)
+- [godot-protobuf-project](https://github.com/MeteorGX/quarkus-pekko-actor-example/tree/main/protobuf-cluster)
 
 ## License
+
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
