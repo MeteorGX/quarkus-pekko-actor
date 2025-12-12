@@ -39,7 +39,7 @@
 
         <pekko.platform.artifact-id>pekko-bom</pekko.platform.artifact-id>
         <pekko.platform.group-id>org.apache.pekko</pekko.platform.group-id>
-        <pekko.platform.version>1.2.0</pekko.platform.version>
+        <pekko.platform.version>1.4.0</pekko.platform.version>
         <pekko.platform.scala-version>2.13</pekko.platform.scala-version>
     </properties>
 
